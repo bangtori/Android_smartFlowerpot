@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".image">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/BtnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:background="@drawable/buttonshape"
+            android:layout_margin="10dp"
+            android:visibility="visible"
+            android:fontFamily="@font/nanum"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나의 식물"
+            android:layout_margin="10dp"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/nanum"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/ImgPlant"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            android:maxWidth="250dp"
+            android:maxHeight="250dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/plant1"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:id="@+id/BtnUploadPic"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:text="사진 선택"
+            android:textSize="15sp"
+            android:fontFamily="@font/nanum"
+            android:background="@drawable/buttonshape"/>
+
+    </LinearLayout>
+
+</LinearLayout>
