@@ -17,7 +17,6 @@ public class ManagementActivity extends AppCompatActivity {
     account accountFrag;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

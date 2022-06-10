@@ -45,14 +45,6 @@ public class JoinActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Toast.makeText(JoinActivity.this, "자동 로그인 되었습니다.",
-                    Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(),ManagementActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
 
@@ -66,6 +58,11 @@ public class JoinActivity extends AppCompatActivity {
                     Log.d(TAG, "signInWithEmail:success");
                     Toast.makeText(JoinActivity.this, "계정이 성공적으로 생성되었습니다.",
                             Toast.LENGTH_SHORT).show();
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    Toast.makeText(JoinActivity.this, "자동 로그인 되었습니다.",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),ManagementActivity.class);
+                    startActivity(intent);
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());

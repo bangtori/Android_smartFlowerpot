@@ -73,5 +73,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),ManagementActivity.class);
             startActivity(intent);
         }
+
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseAuth.getInstance().signOut();
+
+    }
+
+
 }

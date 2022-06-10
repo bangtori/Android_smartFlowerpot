@@ -36,12 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Toast.makeText(LoginActivity.this, "자동 로그인 되었습니다.",
-                    Toast.LENGTH_SHORT).show();
-            moveMainPage(currentUser);
-        }
     }
 
 
