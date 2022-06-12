@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/Scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:text="로그아웃"
                     android:background="@drawable/buttonshape"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:visibility="visible"
                     android:fontFamily="@font/nanum"/>
 
@@ -97,7 +97,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/BtnWatering"
                     android:text="화분에 물주기"
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="70dp"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:fontFamily="@font/nanum"

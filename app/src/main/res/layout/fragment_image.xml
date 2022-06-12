@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="로그아웃"
             android:background="@drawable/buttonshape"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:visibility="visible"
             android:fontFamily="@font/nanum"/>
 
@@ -62,11 +62,21 @@
             android:textSize="15sp"
             android:fontFamily="@font/nanum"
             android:background="@color/honeydew"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:id="@+id/BtnDeletePic"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="사진 삭제"
+            android:textSize="15sp"
+            android:fontFamily="@font/nanum"
+            android:background="@color/honeydew"/>
+
         <ProgressBar
             android:id="@+id/ProgressView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:visibility="invisible"/>
         <Button
             android:layout_width="300dp"

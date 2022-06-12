@@ -9,6 +9,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#88000000</color>
     <color name="mediumseagreen">#3CB371</color>
     <color name="limegreen">#32CD32</color>
     <color name="lawngreen">#7CFC00</color>

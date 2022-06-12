@@ -63,7 +63,7 @@ public class water extends Fragment {
 
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://fir-test-5e529.appspot.com/");
         storageRef = storage.getReference();
-        storageRef.child("1654756448290.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(getActivity().getApplicationContext()).load(uri).into(imgPlant);
@@ -72,7 +72,14 @@ public class water extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity().getApplicationContext(), "이미지 로드 실패", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "이미지를 등록해주세요.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imgPlant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity().getApplicationContext(), "이미지는 image 탭에서 변경해야 합니다.", Toast.LENGTH_SHORT).show();;
             }
         });
 
