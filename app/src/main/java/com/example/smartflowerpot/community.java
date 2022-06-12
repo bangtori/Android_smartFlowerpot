@@ -35,14 +35,12 @@ public class community extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onResume() {
+        super.onResume();
 
-        View view = inflater.inflate(R.layout.fragment_community, container, false);
-
-        Button btnLogout = (Button) view.findViewById(R.id.BtnLogout);
-        Button btnWrite = (Button) view.findViewById(R.id.BtnWrite);
-        RecyclerView recyclerView = view.findViewById(R.id.RecyclerView);
+        Button btnLogout = (Button) getActivity().findViewById(R.id.BtnLogout);
+        Button btnWrite = (Button) getActivity().findViewById(R.id.BtnWrite);
+        RecyclerView recyclerView = getActivity().findViewById(R.id.RecyclerView);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
@@ -77,6 +75,7 @@ public class community extends Fragment {
                 data = snapshot.getValue(Data.class);
                 Toast.makeText(getActivity().getApplicationContext(), data.getTitle(),Toast.LENGTH_SHORT).show();
                 adapter.additem(data);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -99,6 +98,40 @@ public class community extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_community, container, false);
+
+        Button btnLogout = (Button) view.findViewById(R.id.BtnLogout);
+        Button btnWrite = (Button) view.findViewById(R.id.BtnWrite);
+        RecyclerView recyclerView = view.findViewById(R.id.RecyclerView);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getActivity(), "로그아웃되었습니다.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent1 = new Intent(getActivity(), Write.class);
+                startActivity(intent1);
+            }
+        });
+
 
         return view;
     }

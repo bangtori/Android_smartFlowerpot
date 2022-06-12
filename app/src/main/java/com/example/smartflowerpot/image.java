@@ -86,15 +86,10 @@ public class image extends Fragment {
         btnUploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (storageRef.child("image.jpg") == null) {
                     Intent intent = new Intent(Intent.ACTION_PICK);
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     mStartForResult.launch(intent);
-                }
-                else{
-                    Toast.makeText(getActivity(),"이미지 삭제 후 등록 가능",Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -107,18 +102,18 @@ public class image extends Fragment {
                 else{
                     Toast.makeText(getActivity(), "사진을 선택해주세요.",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         btnDeletePic.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if (storageRef.child("image.jpg") != null) {
                     storageRef.child("image.jpg").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getActivity(), "이미지가 성공적으로 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            imgPlant.setImageResource(R.drawable.plant1);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -126,16 +121,9 @@ public class image extends Fragment {
                             Toast.makeText(getActivity(), "이미지 삭제에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    imgPlant.setImageResource(R.drawable.plant1);
-                }
-                else{
-                    Toast.makeText(getActivity(), "이미지가 등록되지 않아 삭제할 수 없습니다.", Toast.LENGTH_SHORT).show();;
-                }
+
             }
         });
-
-
-
         return view;
     }
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(

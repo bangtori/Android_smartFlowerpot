@@ -19,13 +19,14 @@ public class Write extends AppCompatActivity {
     private Button btnRegister;
     private EditText edtTitle, edtTextMultiLine;
     community communityFrag;
-    private int i=1;
+    water waterFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_item);
 
         communityFrag = new community();
+        waterFrag = new water();
         scroll = (ScrollView) findViewById(R.id.Scroll);
         btnRegister = (Button) findViewById(R.id.BtnRegister);
         edtTitle = (EditText) findViewById(R.id.EdtTitle);
@@ -49,7 +50,8 @@ public class Write extends AppCompatActivity {
                 DatabaseReference dataRef = ref.child("Data");
                 dataRef.push().setValue(data);
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, communityFrag).commit();
+
+                finish();
             }
         });
     }
