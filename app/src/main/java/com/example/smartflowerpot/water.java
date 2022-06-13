@@ -110,12 +110,12 @@ public class water extends Fragment {
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(getActivity().getApplicationContext()).load(uri).into(imgPlant);
-                Toast.makeText(getActivity().getApplicationContext(), "이미지 로드 성공", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity().getApplicationContext(), "이미지 로드 성공", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity().getApplicationContext(), "이미지를 등록해주세요.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity().getApplicationContext(), "이미지를 등록해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -20,6 +20,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     public RecyclerAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
 
+
         return new ItemViewHolder(view);
     }
 
@@ -38,18 +39,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{
-        private TextView txtTitle, txtContent;
+        private TextView txtTitle, txtContent, txtUserID;
 
         ItemViewHolder(View itemView){
             super(itemView);
 
             txtTitle = itemView.findViewById(R.id.TxtTitle);
             txtContent = itemView.findViewById(R.id.TxtContent);
+            txtUserID = itemView.findViewById(R.id.TxtUserID);
+
+
         }
 
         void onBind(Data data){
             txtTitle.setText(data.getTitle());
             txtContent.setText(data.getContent());
+            txtUserID.setText(data.getEmail());
         }
     }
 }

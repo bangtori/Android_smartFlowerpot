@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class community extends Fragment {
     private Intent intent1;
     private Data data;
     private static final String TAG = "LoadData";
+    private ScrollView scroll;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,20 @@ public class community extends Fragment {
 
         Button btnLogout = (Button) getActivity().findViewById(R.id.BtnLogout);
         Button btnWrite = (Button) getActivity().findViewById(R.id.BtnWrite);
+        Button btnDelete = (Button) getActivity().findViewById(R.id.BtnDelete);
         RecyclerView recyclerView = getActivity().findViewById(R.id.RecyclerView);
+        scroll = (ScrollView) getActivity().findViewById(R.id.Scroll);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        final RecyclerAdapter adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
+        scroll.setVerticalScrollBarEnabled(true);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +76,22 @@ public class community extends Fragment {
             }
         });
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
 
-        final RecyclerAdapter adapter = new RecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ref.removeValue();
+                adapter.notifyDataSetChanged();
+                onResume();
+            }
+        });
+
         ref.child("Data").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 data = snapshot.getValue(Data.class);
-                Toast.makeText(getActivity().getApplicationContext(), data.getTitle(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity().getApplicationContext(), data.getTitle(),Toast.LENGTH_SHORT).show();
                 adapter.additem(data);
                 adapter.notifyDataSetChanged();
             }
@@ -109,6 +127,7 @@ public class community extends Fragment {
         Button btnLogout = (Button) view.findViewById(R.id.BtnLogout);
         Button btnWrite = (Button) view.findViewById(R.id.BtnWrite);
         RecyclerView recyclerView = view.findViewById(R.id.RecyclerView);
+        Button btnDelete = (Button) getActivity().findViewById(R.id.BtnDelete);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
